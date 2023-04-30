@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('author');
+//            $table->string('img')->default('uploads/noimage.jpg');
             $table->string('isbn');
             $table->double('price');
             $table->boolean('availability');

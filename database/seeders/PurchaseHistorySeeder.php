@@ -14,6 +14,6 @@ class PurchaseHistorySeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }

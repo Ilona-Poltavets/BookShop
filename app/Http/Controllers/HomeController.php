@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Models\Book;
+use App\Models\Book;
 
 class HomeController extends Controller
 {
@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['books'] = Book::all();
+        $data['books'] = Book::latest()->limit(20)->get()->sortByDesc('created_at');
         return view('home', $data);
     }
 }

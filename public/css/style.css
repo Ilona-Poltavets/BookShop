@@ -1,1 +1,80 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url(./public/css/fonts/MontserratAlternates-SemiBold.ttf)
+}
 
+:root {
+    --mainFont: "Montserrat";
+    --color1: #444444;
+}
+
+.img-lg{
+    height:600px;
+}
+
+.img-md {
+    width: 300px;
+}
+
+.img-sm {
+    width: 50px;
+    height: 50px;
+}
+
+.book-name {
+
+}
+
+.short-desc {
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.green {
+    color: green;
+}
+
+.grey {
+    color: grey;
+}
+
+.book-tile {
+    width: 100px;
+    height: 500px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin: 0 10px;
+}
+
+.book-tile img {
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.book-tile h4 {
+    font-family: var(--mainFont);
+    font-size: 20px;
+}
+
+.book-tile p {
+    font-family: var(--mainFont);
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-tile .price {
+    font-family: var(--mainFont);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.slick-arrow::before {
+    color: var(--color1) !important;
+}

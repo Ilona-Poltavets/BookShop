@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('genres', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('books_id');
-            $table->foreign('books_id')->references('id')->on('books')->onDelete('cascade');
+            $table->string('label');
+            $table->string('img')->default('uploads/noimage.jpg');
             $table->timestamps();
         });
     }

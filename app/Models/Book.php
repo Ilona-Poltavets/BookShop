@@ -8,4 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'author',
+        'isbn',
+        'price',
+        'availability',
+    ];
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public function first_image_path() {
+        $array=$this->images();
+        $img=$array->first();
+        return $img->path;
+    }
+
+    public function path_array(){
+        $array=$this->images();
+        return $array;
+    }
 }
