@@ -16,16 +16,32 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         DB::table('permissions')->insert([
-           'name'=>'Add books',
-           'label'=>'add_books'
+            'name'=>'Edit users',
+            'label'=>'edit_users'
         ]);
         DB::table('permissions')->insert([
-            'name'=>'Edit books',
-            'label'=>'edit_books'
+            'name'=>'Add book',
+            'label'=>'add_book'
         ]);
         DB::table('permissions')->insert([
-            'name'=>'Delete books',
-            'label'=>'delete_books'
+            'name'=>'Edit book',
+            'label'=>'edit_book'
+        ]);
+        DB::table('permissions')->insert([
+            'name'=>'Delete book',
+            'label'=>'delete_book'
+        ]);
+        DB::table('permissions')->insert([
+            'name'=>'Add genre',
+            'label'=>'add_genre'
+        ]);
+        DB::table('permissions')->insert([
+            'name'=>'Edit genre',
+            'label'=>'edit_genre'
+        ]);
+        DB::table('permissions')->insert([
+            'name'=>'Delete genre',
+            'label'=>'delete_genre'
         ]);
     }
 }

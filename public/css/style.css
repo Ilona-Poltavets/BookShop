@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Montserrat";
-    src: url(./public/css/fonts/MontserratAlternates-SemiBold.ttf)
+    src: url(./fonts/MontserratAlternates-SemiBold.ttf)
 }
 
 :root {
@@ -8,8 +8,16 @@
     --color1: #444444;
 }
 
-.img-lg{
-    height:600px;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.img-lg {
+    height: 600px;
 }
 
 .img-md {
@@ -17,8 +25,11 @@
 }
 
 .img-sm {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
+    margin: 10px 10px 10px 0;
+    object-fit: cover;
+    background-color: honeydew;
 }
 
 .book-name {
@@ -41,11 +52,26 @@
 }
 
 .book-tile {
-    width: 100px;
+    width: 100%;
     height: 500px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    margin: 0 10px;
+    /*border-top-left-radius: 15px;*/
+    /*border-top-right-radius: 15px;*/
+    margin: 10px;
+    color: black;
+    text-decoration: none;
+    border-radius: 15px;
+}
+
+.book-tile div {
+    height: 500px;
+}
+
+.book-tile:hover {
+    color: black;
+    text-decoration: none;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
 }
 
 .book-tile img {
@@ -54,6 +80,7 @@
     height: 300px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    /*border-radius: 15px;*/
 }
 
 .book-tile h4 {
@@ -77,4 +104,130 @@
 
 .slick-arrow::before {
     color: var(--color1) !important;
+}
+
+.genres-slider a {
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.genres-slider a:hover {
+    text-decoration: none;
+    color: black;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+}
+
+.genres-slider img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    opacity: .3;
+}
+
+.genres-slider h4 {
+    position: relative;
+    text-align: center;
+    font-family: var(--mainFont);
+    font-size: 20px;
+    bottom: 100px;
+    text-transform: uppercase;
+}
+
+.tiles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tiles a {
+    text-decoration: none;
+    color: black;
+}
+
+.tiles a:hover {
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+}
+
+.tiles .genre-book-tile {
+    width: 300px;
+    height: 500px;
+    margin: 10px;
+}
+
+.tiles .genre-book-tile img {
+    width: inherit;
+    object-fit: cover;
+    height: 300px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.tiles .genre-book-tile p {
+    font-family: var(--mainFont);
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tiles .genre-book-tile h4 {
+    font-family: var(--mainFont);
+    font-size: 20px;
+}
+
+
+/*Comments*/
+
+.comments-block {
+    width: 100%;
+}
+
+.comments-block form {
+    margin: 20px;
+}
+
+.comments-block textarea{
+    margin-bottom:20px;
+}
+
+.comment {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid #aaaaaa;
+    margin: 20px;
+}
+
+.comment .text {
+    font-size: 15px;
+    padding: 10px;
+}
+
+.comment-user img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.comment-user{
+    width:120px !important;
+    text-align: center;
+}
+
+.comment-user {
+    padding: 5px;
+    border-right: 1px solid #aaaaaa;
+}
+
+.time{
+    font-size:12px;
+    color:#aaaaaa;
 }

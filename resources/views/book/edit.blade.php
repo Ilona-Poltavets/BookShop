@@ -1,7 +1,21 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h1 class="text-center">Edit book</h1>
+        <h1 class="text-center">{{__('messages.edit_book')}}</h1>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <a class="btn btn-secondary" href="{{ route('books.index')}}">{{ __('messages.back') }}</a>
+
         <form method="post" action="{{route('books.update',$book->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')

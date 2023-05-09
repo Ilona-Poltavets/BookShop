@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('isbn');
             $table->double('price');
             $table->boolean('availability');
+            $table->unsignedBigInteger('genre_id');
+            $table->foreign('genre_id')->references('id')->on('genres');
             $table->timestamps();
         });
     }

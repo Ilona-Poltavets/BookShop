@@ -16,56 +16,69 @@ class GenresSeeder extends Seeder
     public function run()
     {
         DB::table('genres')->insert([
-            'name'=>'Fantacy',
-            'label'=>'fantacy',
+            'name' => 'Fantacy',
+            'name_ukr' => 'Фентезі',
+//            'label'=>'fantacy',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Travel books',
-            'label'=>'travel_books',
+            'name' => 'Travel books',
+            'name_ukr' => 'Подорож',
+//            'label'=>'travel_books',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Business & Finance',
-            'label'=>'business_finance',
+            'name' => 'Business & Finance',
+            'name_ukr' => 'Бізнес та фінанси',
+//            'label'=>'business_finance',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Fiction',
-            'label'=>'fiction',
+            'name' => 'Fiction',
+            'name_ukr' => 'Художня література',
+//            'label'=>'fiction',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Cook-books',
-            'label'=>'cook_books',
+            'name' => 'Cook-books',
+            'name_ukr' => 'Кулінарія',
+//            'label'=>'cook_books',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Health',
-            'label'=>'health',
+            'name' => 'Health',
+            'name_ukr' => 'Медицина',
+//            'label'=>'health',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Religious',
-            'label'=>'religious ',
+            'name' => 'Religious',
+            'name_ukr' => 'Релігійна література',
+//            'label'=>'religious ',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Romance',
-            'label'=>'romance',
+            'name' => 'Romance',
+            'name_ukr' => 'Романтика',
+//            'label'=>'romance',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Thriller',
-            'label'=>'thriller',
+            'name' => 'Thriller',
+            'name_ukr' => 'Триллер',
+//            'label'=>'thriller',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Mystery',
-            'label'=>'mystery',
+            'name' => 'Mystery',
+            'name_ukr' => 'Містичність',
+//            'label'=>'mystery',
         ]);
         DB::table('genres')->insert([
-            'name'=>'History',
-            'label'=>'history',
+            'name' => 'History',
+            'name_ukr' => 'Історія',
+//            'label'=>'history',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Horror',
-            'label'=>'horror',
+            'name' => 'Horror',
+            'name_ukr' => 'Жахи',
+//            'label'=>'horror',
         ]);
         DB::table('genres')->insert([
-            'name'=>'Autobiography',
-            'label'=>'autobiography',
+            'name' => 'Autobiography',
+            'name_ukr' => 'Автобіографія',
+//            'label'=>'autobiography',
         ]);
     }
 }

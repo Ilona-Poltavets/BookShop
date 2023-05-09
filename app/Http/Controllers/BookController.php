@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Models\Book;
@@ -27,8 +28,9 @@ class BookController extends Controller
 
     function show($id)
     {
-        $book = Book::find($id);
-        return view('book.show', compact('book'));
+        $data['book'] = Book::find($id);
+        $data['comments']=Comment::where('book_id',$id)->orderBy('created_at', 'desc')->get();
+        return view('book.show', $data);
     }
 
     function create()
@@ -49,10 +51,6 @@ class BookController extends Controller
 //    }
         $validatedData = $request->validate(self::VALIDATIO_RULE);
 
-//        if ($request->file('img') != null) {
-//            $validatedData['img'] = ($request->img)->store('uploads/books');
-//        }
-
         if ($request->availability == 1) {
             $validatedData['availability'] = $request->availability;
         } else {
@@ -61,8 +59,8 @@ class BookController extends Controller
 
         $id = Book::create($validatedData)->id;
 
-        if ($request->hasFile('img[]')) {
-            foreach ($request->file('img[]') as $image) {
+        if ($request->hasFile('img')) {
+            foreach ($request->file('img') as $image) {
                 DB::table('images_to_book')->insert([
                     'book_id' => $id,
                     'path' => $image->store('uploads/books/' . $id)
@@ -78,13 +76,13 @@ class BookController extends Controller
         $book = Book::find($id);
 
         $validatedData = $request->validate(self::VALIDATIO_RULE);
-
-        foreach ($request->file('img') as $file) {
-            $path = $file->store('uploads/books/' . $id);
-            $image = new Image();
-            $image->book_id = $id;
-            $image->path = $path;
-            $image->save();
+        if ($request->hasFile('img')) {
+            foreach ($request->file('img') as $image) {
+                DB::table('images_to_book')->insert([
+                    'book_id' => $id,
+                    'path' => $image->store('uploads/books/' . $id)
+                ]);
+            }
         }
 
         if ($request->availability == 1) {

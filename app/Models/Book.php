@@ -29,8 +29,8 @@ class Book extends Model
         return $img->path;
     }
 
-    public function path_array(){
-        $array=$this->images();
-        return $array;
+    public function getImages(){
+        $arr=$this->images()->getModels();
+        return $arr;
     }
 }
