@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,78 +30,92 @@ class BookController extends Controller
     function show($id)
     {
         $data['book'] = Book::find($id);
-        $data['comments']=Comment::where('book_id',$id)->orderBy('created_at', 'desc')->get();
+        $data['comments'] = Comment::where('book_id', $id)->orderBy('created_at', 'desc')->get();
         return view('book.show', $data);
     }
 
     function create()
     {
-        return view('book.create');
+        if (Auth::user() && Auth::user()->hasPermission('add_book')) {
+            return view('book.create');
+        }
+        return redirect()->back();
     }
 
     function edit($id)
     {
-        $book = Book::find($id);
-        return view('book.edit', compact('book'));
+        if (Auth::user() && Auth::user()->hasPermission('edit_book')) {
+            $book = Book::find($id);
+            return view('book.edit', compact('book'));
+        }
+        return redirect()->back();
     }
 
     function store(Request $request)
     {
-//        if (Auth::user() ?->hasPermission('add_book')){
-//
-//    }
-        $validatedData = $request->validate(self::VALIDATIO_RULE);
+        if (Auth::user() && Auth::user()->hasPermission('add_book')) {
 
-        if ($request->availability == 1) {
-            $validatedData['availability'] = $request->availability;
-        } else {
-            $validatedData['availability'] = false;
-        }
+            $validatedData = $request->validate(self::VALIDATIO_RULE);
 
-        $id = Book::create($validatedData)->id;
-
-        if ($request->hasFile('img')) {
-            foreach ($request->file('img') as $image) {
-                DB::table('images_to_book')->insert([
-                    'book_id' => $id,
-                    'path' => $image->store('uploads/books/' . $id)
-                ]);
+            if ($request->availability == 1) {
+                $validatedData['availability'] = $request->availability;
+            } else {
+                $validatedData['availability'] = false;
             }
-        }
 
-        return redirect()->route('books.index')->with('success', 'Book has been created successfully');
+            $id = Book::create($validatedData)->id;
+
+            if ($request->hasFile('img')) {
+                foreach ($request->file('img') as $image) {
+                    DB::table('images_to_book')->insert([
+                        'book_id' => $id,
+                        'path' => $image->store('uploads/books/' . $id)
+                    ]);
+                }
+            }
+
+            return redirect()->route('books.index')->with('success', 'Book has been created successfully');
+        }
+        return redirect()->back();
     }
 
     function update(Request $request, $id)
     {
-        $book = Book::find($id);
+        if (Auth::user() && Auth::user()->hasPermission('edit_book')){
+            $book = Book::find($id);
 
-        $validatedData = $request->validate(self::VALIDATIO_RULE);
-        if ($request->hasFile('img')) {
-            foreach ($request->file('img') as $image) {
-                DB::table('images_to_book')->insert([
-                    'book_id' => $id,
-                    'path' => $image->store('uploads/books/' . $id)
-                ]);
+            $validatedData = $request->validate(self::VALIDATIO_RULE);
+            if ($request->hasFile('img')) {
+                foreach ($request->file('img') as $image) {
+                    DB::table('images_to_book')->insert([
+                        'book_id' => $id,
+                        'path' => $image->store('uploads/books/' . $id)
+                    ]);
+                }
             }
+
+            if ($request->availability == 1) {
+                $validatedData['availability'] = $request->availability;
+            } else {
+                $validatedData['availability'] = false;
+            }
+
+            $book->fill($validatedData)->save();
+
+            return redirect()->route('books.index')->with('success', 'Book has been updated successfully');
         }
 
-        if ($request->availability == 1) {
-            $validatedData['availability'] = $request->availability;
-        } else {
-            $validatedData['availability'] = false;
-        }
-
-        $book->fill($validatedData)->save();
-
-        return redirect()->route('books.index')->with('success', 'Book has been updated successfully');
+        return redirect()->back();
     }
 
     function destroy($id)
     {
-        $book = Book::find($id);
-        Storage::deleteDirectory('uploads/books/' . $id);
-        $book->delete();
-        return redirect()->route('books.index')->with('success', 'Book has been deleted successfully');
+        if (Auth::user() && Auth::user()->hasPermission('delete_book')) {
+            $book = Book::find($id);
+            Storage::deleteDirectory('uploads/books/' . $id);
+            $book->delete();
+            return redirect()->route('books.index')->with('success', 'Book has been deleted successfully');
+        }
+        return redirect()->back();
     }
 }

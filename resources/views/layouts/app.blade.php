@@ -89,9 +89,13 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="">
         @yield('content')
     </main>
+
+    <footer>
+
+    </footer>
 </div>
 <script type="text/javascript" src="{{url('js/jquery-3.6.4.min.js')}}"></script>
 <script type="text/javascript" src="{{url('slick/slick/slick.min.js')}}"></script>

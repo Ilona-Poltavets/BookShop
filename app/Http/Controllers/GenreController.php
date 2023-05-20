@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class GenreController extends Controller
@@ -34,55 +35,70 @@ class GenreController extends Controller
 
     function create()
     {
-        return view('genres.create');
+        if (Auth::user() && Auth::user()->hasPermission('add_genre')){
+            return view('genres.create');
+        }
+        return redirect()->back();
     }
 
     function edit($id)
     {
-        $genre = Genre::find($id);
-        return view('genres.edit', compact('genre'));
+        if (Auth::user() && Auth::user()->hasPermission('edit_genre')){
+            $genre = Genre::find($id);
+            return view('genres.edit', compact('genre'));
+        }
+        return redirect()->back();
     }
 
     function store(Request $request)
     {
-        $validatedData = $request->validate(self::VALIDATION_RULE);
+        if (Auth::user() && Auth::user()->hasPermission('add_genre')){
+            $validatedData = $request->validate(self::VALIDATION_RULE);
 
-        if ($request->file('image') != null) {
-            $validatedData["img"] = ($request->image)->store("uploads/genres");
-        } else {
-            $validatedData["img"] = "css/not_found_image.jpg";
+            if ($request->file('image') != null) {
+                $validatedData["img"] = ($request->image)->store("uploads/genres");
+            } else {
+                $validatedData["img"] = "css/not_found_image.jpg";
+            }
+
+            Genre::create($validatedData);
+
+            return redirect()->route('genres.index')->with('success', 'Genre has been created successfully');
         }
-
-        Genre::create($validatedData);
-
-        return redirect()->route('genres.index')->with('success', 'Genre has been created successfully');
+        return redirect()->back();
     }
 
     function update(Request $request, $id)
     {
-        $genre = Genre::find($id);
+        if (Auth::user() && Auth::user()->hasPermission('edit_genre')){
+            $genre = Genre::find($id);
 
-        $validatedData = $request->validate(self::VALIDATION_RULE);
+            $validatedData = $request->validate(self::VALIDATION_RULE);
 
-        if ($request->file('image') != null) {
-            if ($genre->img != "uploads/noimage.jpg")
-                Storage::delete($genre->img);
-            $validatedData["img"] = ($request->image)->store("uploads/genres");
-        } else {
-            $validatedData["img"] = "uploads/noimage.jpg";
+            if ($request->file('image') != null) {
+                if ($genre->img != "uploads/noimage.jpg")
+                    Storage::delete($genre->img);
+                $validatedData["img"] = ($request->image)->store("uploads/genres");
+            } else {
+                $validatedData["img"] = "uploads/noimage.jpg";
+            }
+
+            $genre->fill($validatedData)->save();
+
+            return redirect()->route('genres.index')->with('success', 'Genre has been updated successfully');
         }
-
-        $genre->fill($validatedData)->save();
-
-        return redirect()->route('genres.index')->with('success', 'Genre has been updated successfully');
+        return redirect()->back();
     }
 
     function destroy($id)
     {
-        $genre = Genre::find($id);
-        if ($genre->img != "uploads/noimage.jpg")
-            Storage::delete($genre->img);
-        $genre->delete();
-        return redirect()->route('genres.index')->with('success', 'Genre has been deleted successfully');
+        if (Auth::user() && Auth::user()->hasPermission('delete_genre')){
+            $genre = Genre::find($id);
+            if ($genre->img != "uploads/noimage.jpg")
+                Storage::delete($genre->img);
+            $genre->delete();
+            return redirect()->route('genres.index')->with('success', 'Genre has been deleted successfully');
+        }
+        return redirect()->back();
     }
 }

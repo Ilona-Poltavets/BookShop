@@ -28,9 +28,9 @@ $(document).ready(function () {
         ]
     })
     $('.genres-slider').slick({
-        arrows: false,
+        arrows: true,
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 300,
         slidesToShow: 4,
         cssEase: 'linear',
@@ -55,5 +55,13 @@ $(document).ready(function () {
             }
         ]
     })
-
+    $('.home-slider').slick({
+        arrows: false,
+        dots: true,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        slidesToShow: 1,
+        cssEase: 'linear',
+    })
 })

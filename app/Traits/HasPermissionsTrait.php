@@ -52,7 +52,7 @@ trait HasPermissionsTrait
     public function hasRole(...$roles)
     {
         foreach ($roles as $role) {
-            if ($this->roles->contains('slug', $role)) {
+            if ($this->roles->contains('label', $role)) {
                 return true;
             }
         }
@@ -69,15 +69,15 @@ trait HasPermissionsTrait
         return $this->belongsToMany(Permission::class, 'users_permissions');
     }
 
-    protected function hasPermission($permission)
+    public function hasPermission($permission)
     {
-        return (bool)$this->permissions->where('slug', $permission->slug)->count();
+        return (bool)$this->roles[0]->permissions->where('label', $permission)->count();
     }
 
     protected function getAllPermissions(array $permissions)
     {
 
-        return Permission::whereIn('slug', $permissions)->get();
+        return Permission::whereIn('label', $permissions)->get();
 
     }
 }
