@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class RateController extends Controller
 {
+    //TODO create calculating
     /**
      * Display a listing of the resource.
      *

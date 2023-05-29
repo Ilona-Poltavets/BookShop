@@ -13,6 +13,8 @@ class PermissionSeeder extends Seeder
      *
      * @return void
      */
+
+    //TODO add rule for publisher, category, rate, sale
     public function run()
     {
         DB::table('permissions')->insert([

@@ -35,8 +35,6 @@
                     </form>
                 </div>
 
-{{--                <button class="btn btn-success text-uppercase">Add to cart</button>--}}
-
                 <p class="available-status">
                     @if($book->availability==true)
                         <i class="fa-solid fa-circle green"></i>
@@ -48,7 +46,7 @@
 
             @auth()
                 <div class="rating">
-                    fdjgkldfsjglkdjwslkfgjsdlfsdalkf
+
                 </div>
                 <div class="comments-block">
                     <form method="POST" action="{{ route('addComment',$book->id) }}">

@@ -1,6 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Оформление заказа</h1>
-    <p>Здесь будет форма оформления</p>
+    <div class="container">
+        <div class="checkout">
+            <div class="order-block">
+                <section class="personal-data">
+
+                </section>
+                <section class="shipping-details">
+
+                </section>
+                <section class="payment">
+
+                </section>
+            </div>
+            <div class="side-block">
+                <section class="summary">
+
+                </section>
+            </div>
+        </div>
+    </div>
 @endsection
