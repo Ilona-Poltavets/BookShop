@@ -33,4 +33,8 @@ class Book extends Model
         $arr=$this->images()->getModels();
         return $arr;
     }
+
+    public function baskets() {
+        return $this->belongsToMany(Basket::class)->withPivot('quantity');
+    }
 }

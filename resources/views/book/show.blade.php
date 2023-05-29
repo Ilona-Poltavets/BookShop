@@ -18,9 +18,18 @@
             <div class="col-12 col-md-12 col-lg-6">
                 <h5 class="book-name">{{$book->name}}</h5>
                 <p class="short-desc">{{$book->description}}</p>
-                <p class="price">{{$book->price}}</p>
 
-                <button class="btn btn-success text-uppercase">Add to cart</button>
+                <div class="col-md-6">
+                    <p>Цена: {{ number_format($book->price, 2, '.', '') }}</p>
+                    <!-- Форма для добавления товара в корзину -->
+                    <form action="{{ route('basket.add', ['id' => $book->id]) }}"
+                          method="post" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Добавить в корзину</button>
+                    </form>
+                </div>
+
+{{--                <button class="btn btn-success text-uppercase">Add to cart</button>--}}
 
                 <p class="available-status">
                     @if($book->availability==true)
