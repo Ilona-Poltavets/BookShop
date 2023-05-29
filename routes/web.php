@@ -21,6 +21,13 @@ Route::resource('books', 'App\Http\Controllers\BookController');
 Route::resource('genres', 'App\Http\Controllers\GenreController');
 Route::post('/send_comment/{id}', "App\Http\Controllers\CommentController@store")->name("addComment")->middleware('auth');
 
+
+/*
+|--------------------------------------------------------------------------
+| User Basket
+|--------------------------------------------------------------------------
+*/
+
 Route::group([
     'as' => 'basket.', // имя маршрута, например basket.index
     'prefix' => 'basket', // префикс маршрута, например basket/index
@@ -60,3 +67,16 @@ Route::group([
     Route::post('clear', 'App\Http\Controllers\BasketController@clear')
         ->name('clear');
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Change language
+|--------------------------------------------------------------------------
+*/
+
+Route::get('setlocale/{lang}', function ($lang) {
+    Cookie::queue('lang', $lang);
+
+    return redirect()->back();
+})->name('setlocale');

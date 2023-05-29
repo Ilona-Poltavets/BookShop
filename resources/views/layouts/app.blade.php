@@ -94,7 +94,66 @@
     </main>
 
     <footer>
-
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-xxl-2 py-3">
+                    <h5>
+                        Need help?
+                    </h5>
+                    <a class="btn btn-secondary">Contact Us</a>
+                </div>
+                <div class="col-12  col-md-6 col-xxl-3 py-3">
+                    <h5>
+                        Customer Support
+                    </h5>
+                    <ul>
+                        <li><a href="#">Returns & Warranty</a></li>
+                        <li><a href="#">Payment</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-xxl-3 py-3">
+                    <h5>
+                        Corporate Info
+                    </h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Brands</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-xxl-2 py-3">
+                    <h5>
+                        Gift card
+                    </h5>
+                    <ul>
+                        <li><a href="#">Buy Gift Cards</a></li>
+                        <li><a href="#">Redeem Card</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-12 col-xxl-2  py-3 d-flex justify-content-between flex-column">
+                    <div>
+                        <h5>
+                            Location
+                        </h5>
+                        <select>
+                            <option>United States</option>
+                            <option>Ukraine</option>
+                        </select>
+                    </div>
+                    <div class="brands">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 </div>
 <script type="text/javascript" src="{{url('js/jquery-3.6.4.min.js')}}"></script>

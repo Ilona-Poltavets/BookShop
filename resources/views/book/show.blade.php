@@ -4,14 +4,20 @@
         <div class="path"></div>
         <div class="row">
             <div class="col-12 col-md-12 col-lg-6">
-                <img class="img-lg"
-                     src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}">
+                <a href="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}" data-fancybox="single" data-caption="Single #1">
+                    <img src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}" />
+                </a>
+{{--                <img class="img-lg"--}}
+{{--                     src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}">--}}
                 <div class="d-flex flex-row">
                     @php($images=$book->getImages())
                     @foreach($images as $image)
-                        <a data-fancybox="images" href="{{url($image->path)}}"><img class="img-sm"
-                                                                                    src="{{url($image->path)}}" alt=""></a>
-                        {{--                        <img class="img-sm" src="{{url($image->path)}}">--}}
+                        <a
+                            data-fancybox="gallery"
+                            data-src="{{ url($image->path) }}"
+                        >
+                            <img class="img-sm" src="{{url($image->path)}}" alt="">
+                        </a>
                     @endforeach
                 </div>
             </div>

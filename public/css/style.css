@@ -36,10 +36,6 @@ section {
     background-color: honeydew;
 }
 
-.book-name {
-
-}
-
 .short-desc {
     padding: 10px;
     white-space: nowrap;
@@ -303,6 +299,81 @@ section {
     margin-right: 20px;
 }
 
+footer {
+    background-color: #000000;
+    padding: 20px 0 100px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+footer a.btn:hover {
+    text-decoration: none;
+}
+
+footer ul {
+    list-style: none;
+    color: white;
+    padding: 0;
+    font-size: 16px;
+}
+
+footer ul li {
+    margin: 10px 0;
+}
+
+footer h5 {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+footer select {
+    background-color: transparent;
+    border: 0;
+    color: white;
+}
+
+footer select option {
+    color: black;
+}
+
+footer .brands {
+    color: #619b43;
+    display: flex;
+    justify-content: space-around;
+    font-size: 30px;
+}
+
+footer .brands a {
+    color: #619b43;
+}
+
+@media screen and (max-width: 720px) {
+    footer h5 {
+        text-align: center;
+    }
+
+    footer ul li {
+        text-align: center;
+    }
+    footer select{
+        width: 100%;
+        text-align: center;
+    }
+    footer a.btn{
+        width: 100%;
+    }
+}
+
 .link {
     text-transform: uppercase;
     color: black;
@@ -367,14 +438,14 @@ section {
     top: 20vh;
     z-index: 999;
     color: #ffffff;
-    left:0;
-    right:0;
-    margin-left:auto;
-    margin-right:auto;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.home-header .home-slider-text h1{
+.home-header .home-slider-text h1 {
     text-align: center;
     font-size: 60px;
-    font-weight:500;
+    font-weight: 500;
 }
