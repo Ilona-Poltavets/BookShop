@@ -10,16 +10,16 @@
             <form action="{{ route('basket.clear') }}" method="post" class="text-right">
                 @csrf
                 <button type="submit" class="btn btn-outline-danger mb-4 mt-0">
-                    Clear
+                    {{ __('messages.clear') }}
                 </button>
             </form>
             <table class="table table-bordered">
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>{{ __('messages.name') }}</th>
+                    <th>{{ __('messages.price') }}</th>
+                    <th>{{ __('messages.quantity') }}</th>
+                    <th>{{ __('messages.price') }}</th>
                     <th></th>
                 </tr>
                 @foreach($books as $book)
@@ -67,16 +67,16 @@
                     </tr>
                 @endforeach
                 <tr>
-                    <th colspan="4" class="text-right">Sum</th>
+                    <th colspan="4" class="text-right">{{ __('messages.sum') }}</th>
                     <th>{{ number_format($basketCost, 2, '.', '') }}</th>
                     <th></th>
                 </tr>
             </table>
             <a href="{{ route('basket.checkout') }}" class="btn btn-success float-right">
-                Order
+                {{ __('messages.order') }}
             </a>
         @else
-            <p>Basket empty</p>
+            <p>{{ __('messages.basket_empty') }}</p>
         @endif
     </div>
 @endsection

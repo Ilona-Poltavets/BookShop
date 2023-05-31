@@ -7,8 +7,6 @@
                 <a href="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}" data-fancybox="single" data-caption="Single #1">
                     <img src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}" />
                 </a>
-{{--                <img class="img-lg"--}}
-{{--                     src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}">--}}
                 <div class="d-flex flex-row">
                     @php($images=$book->getImages())
                     @foreach($images as $image)
@@ -26,12 +24,11 @@
                 <p class="short-desc">{{$book->description}}</p>
 
                 <div class="col-md-6">
-                    <p>Цена: {{ number_format($book->price, 2, '.', '') }}</p>
-                    <!-- Форма для добавления товара в корзину -->
+                    <p>{{ __('messages.price') }}: {{ number_format($book->price, 2, '.', '') }}</p>
                     <form action="{{ route('basket.add', ['id' => $book->id]) }}"
                           method="post" class="d-inline">
                         @csrf
-                        <button type="submit" class="btn btn-success">Добавить в корзину</button>
+                        <button type="submit" class="btn btn-success">{{ __('messages.add_to_basket') }}</button>
                     </form>
                 </div>
 
