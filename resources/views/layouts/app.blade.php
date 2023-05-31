@@ -140,9 +140,15 @@
                         <h5>
                             Location
                         </h5>
-                        <select>
-                            <option>United States</option>
-                            <option>Ukraine</option>
+                        <select id="select-lang" onchange="top.location.href = 'setlocale/'+this.options[this.selectedIndex].value">
+                            <option {{--data-img_src="{{asset('images/langs/us.png')}}"--}} value="us" @if((App::isLocale('us'))) selected @endif>
+{{--                                <img class="flag" alt="USA" src="{{asset('images/langs/uk.png')}}"/>--}}
+                                United States
+                            </option>
+                            <option {{--data-img_src="{{asset('images/langs/uk.png')}}"--}} value="uk" @if((App::isLocale('uk'))) selected @endif>
+{{--                                <img class="flag" alt="ukraine" src="{{asset('images/langs/uk.png')}}"/>--}}
+                                Ukraine
+                            </option>
                         </select>
                     </div>
                     <div class="brands">
