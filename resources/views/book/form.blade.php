@@ -65,6 +65,51 @@
                 </div>
 
                 <div class="row mb-3">
+                    <label for="genre_id" class="col-2 col-form-label">{{ __('message.genre')}}</label>
+                    <div class="col-10">
+                        <select name="genre_id">
+                            @foreach($genres as $genre)
+                                <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @error('genre_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="category_id" class="col-2 col-form-label">{{ __('message.category')}}</label>
+                    <div class="col-10">
+                        <select name="category_id">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @error('category_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="publisher_id" class="col-2 col-form-label">{{ __('message.publisher')}}</label>
+                    <div class="col-10">
+                        <select name="publisher_id">
+                            @foreach($publishers as $publisher)
+                                <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                            @endforeach
+                        </select>
+
+                        @error('publisher_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3">
                     <label for="img" class="col-2 col-form-label">{{ __('message.photo')}}</label>
                     <div class="col-10">
                         @if(isset($book) && count($book->images)>0)

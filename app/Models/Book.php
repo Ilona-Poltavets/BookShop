@@ -16,6 +16,9 @@ class Book extends Model
         'isbn',
         'price',
         'availability',
+        'genre_id',
+        'category_id',
+        'publisher_id',
     ];
 
     public function images()

@@ -11,7 +11,7 @@ class SaleController extends Controller
     //TODO change rules
     public function index()
     {
-        $data['sales'] = Sale::all();
+        $data['sales'] = Sale::paginate(10);
         return view('sale.index', $data);
     }
 

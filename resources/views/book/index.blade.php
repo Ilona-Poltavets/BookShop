@@ -37,43 +37,6 @@
                 {{--                </a>--}}
             @endforeach
         </div>
-        {{--        <table class="table table-dark table-striped">--}}
-        {{--            <thead>--}}
-        {{--            <tr>--}}
-        {{--                <td>#</td>--}}
-        {{--                <td>img</td>--}}
-        {{--                <td>name</td>--}}
-        {{--                <td></td>--}}
-        {{--            </tr>--}}
-        {{--            </thead>--}}
-        {{--            <tbody>--}}
-        {{--            @foreach ($books as $book)--}}
-        {{--                <tr>--}}
-        {{--                    <td>--}}
-        {{--                        {{$book->id}}--}}
-        {{--                    </td>--}}
-        {{--                    <td>--}}
-        {{--                        <img class="img-md" src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}">--}}
-        {{--                    </td>--}}
-        {{--                    <td>--}}
-        {{--                        {{$book->name}}--}}
-        {{--                    </td>--}}
-        {{--                    <td>--}}
-        {{--                        <div class="btn-group-vertical">--}}
-        {{--                            <a href="{{route('books.show',$book->id)}}" class="btn btn-info">{{ __('message.show') }}</a>--}}
-        {{--                            <a class="btn btn-warning"--}}
-        {{--                               href="{{route('books.edit',$book->id)}}">{{ __('message.edit') }}</a>--}}
-        {{--                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"--}}
-        {{--                                    data-bs-target="#exampleModal" data-bs-name="{{$book->name}}"--}}
-        {{--                                    data-bs-id="{{$book->id}}">--}}
-        {{--                                {{ __('message.delete') }}--}}
-        {{--                            </button>--}}
-        {{--                        </div>--}}
-        {{--                    </td>--}}
-        {{--                </tr>--}}
-        {{--            @endforeach--}}
-        {{--            </tbody>--}}
-        {{--        </table>--}}
     </div>
 @endsection
 

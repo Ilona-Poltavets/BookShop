@@ -4,8 +4,10 @@
         <div class="path"></div>
         <div class="row">
             <div class="col-12 col-md-12 col-lg-6">
-                <a href="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}" data-fancybox="single" data-caption="Single #1">
-                    <img src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}" />
+                <a href="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}"
+                   data-fancybox="single" data-caption="Single #1">
+                    <img
+                        src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}"/>
                 </a>
                 <div class="d-flex flex-row">
                     @php($images=$book->getImages())
@@ -43,7 +45,16 @@
 
             @auth()
                 <div class="rating">
-
+                    <div class="stars">
+                        <div class="on" style="width: {{ \App\Services\Utility::averageRaitingBookInProcent($book->id) }}%;"></div>
+                        <div class="live">
+                            <span data-rate="1"></span>
+                            <span data-rate="2"></span>
+                            <span data-rate="3"></span>
+                            <span data-rate="4"></span>
+                            <span data-rate="5"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="comments-block">
                     <form method="POST" action="{{ route('addComment',$book->id) }}">
@@ -73,4 +84,31 @@
             @endif
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('.stars span').on('click', function () {
+                var book_id = <?= $book->id ?>;
+                var rating = $(this).data('rate');
+
+                console.log(book_id);
+
+                $.ajax({
+                    url: '/rating/update',
+                    method: 'POST',
+                    data: {
+                        "_token": $('meta[name="csrf-token"]').attr('content'),
+                        book_id: book_id,
+                        rating: rating
+                    },
+                    success: function (response) {
+                        var updatedRating = response.rating;
+                        $('.stars .on').css('width', updatedRating + '%');
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

@@ -18,7 +18,7 @@ class PublisherController extends Controller
     //TODO change rules
     public function index()
     {
-        $data['publishers'] = Publisher::all();
+        $data['publishers'] = Publisher::paginate(10);
         return view('publisher.index', $data);
     }
 

@@ -25,7 +25,7 @@
                     </td>
                     <td>
                         <img class="img-md"
-                             src="{{ url($category->img) }}">
+                             src="{{ url($category->image) }}">
                     </td>
                     <td>
                         {{$category->name}}
@@ -93,6 +93,6 @@
         var modalForm = exampleModal.querySelector('#form_delete')
         modalTitle.textContent = 'Delete ' + name
         modalBodyInput.textContent = name
-        modalForm.action = window.location.origin + '/genres/' + id
+        modalForm.action = window.location.origin + '/category/' + id
     })
 </script>

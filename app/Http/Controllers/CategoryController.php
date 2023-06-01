@@ -18,7 +18,7 @@ class CategoryController extends Controller
     //TODO change rules
     public function index()
     {
-        $data['categories'] = Category::all();
+        $data['categories'] = Category::paginate(10);
         return view('category.index', $data);
     }
 

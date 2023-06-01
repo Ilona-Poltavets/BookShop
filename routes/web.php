@@ -61,6 +61,10 @@ Route::group([
         ->name('clear');
 });
 
+Route::post('/rating/update', 'App\Http\Controllers\RateController@update')->name('rating.update');
+Route::get('/top_books', 'App\Http\Controllers\BookController@getTop')->name('top_books');
+Route::post('/search', 'App\Http\Controllers\SearchController@searchBook')->name('search.book');
+Route::get('/suggestions', 'App\Http\Controllers\SearchController@suggestions')->name('suggestions');
 
 /*
 |--------------------------------------------------------------------------

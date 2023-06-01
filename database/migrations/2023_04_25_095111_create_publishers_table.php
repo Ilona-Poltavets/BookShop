@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('name_ukr');
             $table->string('slug');
-            $table->string('image');
+            $table->string('image')->default('uploads/noimage.jpg');
             $table->timestamps();
         });
     }

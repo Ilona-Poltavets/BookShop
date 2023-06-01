@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Genre;
 use App\Models\Image;
+use App\Models\Publisher;
+use App\Services\Utility;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
@@ -17,13 +21,39 @@ class BookController extends Controller
         'description' => 'required',
 //        'img.*' => 'image|mimes:jpg,jpeg,png',
         'author' => 'required',
+        'genre_id' => 'required',
+        'category_id' => 'required',
+        'publisher_id' => 'required',
         'isbn' => 'required',
         'price' => 'numeric|required'
     ];
 
     function index()
     {
-        $data['books'] = Book::all();
+        $data['books'] = Book::paginate(10);
+
+        //dd($data);
+        return view('book.index', $data);
+    }
+
+    function getTop(){
+        $books = Book::all();
+        foreach ( $books as $book){
+            $book['raite']=Utility::averageRaitingBookInProcent($book->id);
+        }
+
+        $data['books']=array($books);
+
+        usort($data['books'], fn($a, $b) => strcmp($a->raite, $b->raite));
+
+        //dd($data);
+
+        return view('book.index', $data);
+    }
+
+    function getLatest(){
+        $data['books']=DB::table('files')->latest('upload_time')->get();
+
         return view('book.index', $data);
     }
 
@@ -37,7 +67,10 @@ class BookController extends Controller
     function create()
     {
         if (Auth::user() && Auth::user()->hasPermission('add_book')) {
-            return view('book.create');
+            $data['genres']=Genre::all();
+            $data['categories']=Category::all();
+            $data['publishers']=Publisher::all();
+            return view('book.create',$data);
         }
         return redirect()->back();
     }

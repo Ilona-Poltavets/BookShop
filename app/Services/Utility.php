@@ -2,32 +2,27 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
+
 class Utility
 {
-    public static function slugify($text, string $divider = '-')
-    {
-        // replace non letter or digits by divider
-        $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
+    static function slugify($string){
+        $text=strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string), '-'));
+        return $text;
+    }
 
-        // transliterate
-        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+    static function averageRaitingBookInProcent($book_id){
+        $rates = DB::table('rates')->where('book_id','=',$book_id)->get();
 
-        // remove unwanted characters
-        $text = preg_replace('~[^-\w]+~', '', $text);
+        $count = count($rates);
+        $sum=0;
 
-        // trim
-        $text = trim($text, $divider);
-
-        // remove duplicate divider
-        $text = preg_replace('~-+~', $divider, $text);
-
-        // lowercase
-        $text = strtolower($text);
-
-        if (empty($text)) {
-            return 'n-a';
+        foreach ($rates as $rate) {
+            $sum+=$rate->rate;
         }
 
-        return $text;
+        $avg=$sum/$count;
+
+        return ($avg*100)/5;
     }
 }

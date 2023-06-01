@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::table('books', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id');
-            $table->string('publisher');
+            $table->unsignedBigInteger('publisher_id');
 
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('publisher')->references('name')->on('publishers');
+            $table->foreign('publisher_id')->references('id')->on('publishers');
         });
     }
 
