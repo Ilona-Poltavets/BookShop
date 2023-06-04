@@ -36,7 +36,7 @@
         <div class="navigation-pc">
             <a href="javascript:void(0);">
                 <div class="sale">
-                    <p>Book Easter: discount up to -80% on everything</p>
+                    <p>{{__("message.Book_Easter: discount up to -80% on everything")}}</p>
                 </div>
             </a>
             <div class="upper-nav">
@@ -59,9 +59,9 @@
                     <a href="javascript:void(0)" style="margin-left: 20px;"><i class="fa-regular fa-heart"></i></a>
                     @guest
                         <a href="{{ route('login') }}" style="margin-left: 20px;"><i class="fa-regular fa-user"
-                                                                                     style="margin-right: 4px;"></i>{{ __('Login') }}
+                                                                                     style="margin-right: 4px;"></i>{{ __('message.Login') }}
                         </a>
-                        <a style="margin-left: 20px;" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a style="margin-left: 20px;" href="{{ route('register') }}">{{ __('message.Register') }}</a>
                     @else
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -72,7 +72,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                                              document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('message.Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -84,15 +84,15 @@
             </div>
             <div class="lower-nav">
                 <div class="left-links">
-                    <a href="{{ route('books.index') }}" style="margin-left: 35px;">Products</a>
-                    <a href="javascript:void(0)" style="margin-left: 35px;">SALE</a>
-                    <a href="{{ route('top_books') }}" style="margin-left: 35px;">TOP books</a>
-                    <a href="{{ route('publisher.index') }}" style="margin-left: 35px;">Publishers</a>
+                    <a href="{{ route('books.index') }}" style="margin-left: 35px;">{{ __("message.Products") }}</a>
+                    <a href="javascript:void(0)" style="margin-left: 35px;">{{ __("message.SALE") }}</a>
+                    <a href="{{ route('top_books') }}" style="margin-left: 35px;">{{__("message.TOP_books")}}</a>
+                    <a href="{{ route('publisher.index') }}" style="margin-left: 35px;">{{__("message.Publishers")}}</a>
                 </div>
                 <div class="right-links">
-                    <a href="javascript:void(0)" style="margin-right: 35px;">Shipping</a>
-                    <a href="javascript:void(0)" style="margin-right: 35px;">Payment</a>
-                    <a href="javascript:void(0)" style="margin-right: 35px;">Contact</a>
+                    <a href="javascript:void(0)" style="margin-right: 35px;">{{__("message.Shipping")}}</a>
+                    <a href="javascript:void(0)" style="margin-right: 35px;">{{__("message.Payment")}}</a>
+                    <a href="javascript:void(0)" style="margin-right: 35px;">{{__("message.Contact")}}</a>
                 </div>
             </div>
         </div>
@@ -103,19 +103,19 @@
                 <div class="mobile-menu-container">
                     <div class="mobile-links"
                          style="display: flex; flex-direction: column; padding: 120px; font-size: 26px;">
-                        <a href="{{ route('books.index') }}">Products</a>
-                        <a href="javascript:void(0)">SALE</a>
-                        <a href="{{ route('top_books') }}">TOP books</a>
-                        <a href="{{ route('publisher.index') }}">Publishers</a>
-                        <a href="javascript:void(0)">Shipping</a>
-                        <a href="javascript:void(0)">Payment</a>
-                        <a href="javascript:void(0)">Contact</a>
+                        <a href="{{ route('books.index') }}">{{ __("message.Products") }}</a>
+                        <a href="javascript:void(0)">{{ __("message.SALE") }}</a>
+                        <a href="{{ route('top_books') }}">{{__("message.TOP_books")}}</a>
+                        <a href="{{ route('publisher.index') }}">{{__("message.Publishers")}}</a>
+                        <a href="javascript:void(0)">{{__("message.Shipping")}}</a>
+                        <a href="javascript:void(0)">{{__("message.Payment")}}</a>
+                        <a href="javascript:void(0)">{{__("message.Contact")}}</a>
                         <div class="personal" style="margin-top: 20px; font-size: 30px;">
                             <a href="{{ route('basket.index') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                             <a href="javascript:void(0)" style="margin-left: 20px;"><i
                                     class="fa-regular fa-heart"></i></a>
                             <a href="{{ route('login') }}" style="margin-left: 20px;"><i class="fa-regular fa-user"
-                                                                                         style="margin-right: 4px;"></i>{{ __('Login') }}
+                                                                                         style="margin-right: 4px;"></i>{{ __('message.Login') }}
                             </a>
                         </div>
                     </div>
@@ -129,65 +129,6 @@
         </div>
         <hr class="line" style="border: 1px solid #d8d8d8"/>
     </header>
-    {{--    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">--}}
-    {{--        <div class="container">--}}
-    {{--            <a class="navbar-brand" href="{{ url('/') }}">--}}
-    {{--                {{ config('app.name', 'Laravel') }}--}}
-    {{--            </a>--}}
-    {{--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"--}}
-    {{--                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"--}}
-    {{--                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
-    {{--                <span class="navbar-toggler-icon"></span>--}}
-    {{--            </button>--}}
-
-    {{--            <div class="collapse navbar-collapse" id="navbarSupportedContent">--}}
-    {{--                <!-- Left Side Of Navbar -->--}}
-    {{--                <ul class="navbar-nav me-auto">--}}
-    {{--                    <form class="d-flex" role="search">--}}
-    {{--                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--}}
-    {{--                        <button class="btn btn-outline-success" type="submit">Search</button>--}}
-    {{--                    </form>--}}
-    {{--                </ul>--}}
-
-    {{--                <!-- Right Side Of Navbar -->--}}
-    {{--                <ul class="navbar-nav ms-auto">--}}
-    {{--                    <!-- Authentication Links -->--}}
-    {{--                    @guest--}}
-    {{--                        @if (Route::has('login'))--}}
-    {{--                            <li class="nav-item">--}}
-    {{--                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
-    {{--                            </li>--}}
-    {{--                        @endif--}}
-
-    {{--                        @if (Route::has('register'))--}}
-    {{--                            <li class="nav-item">--}}
-    {{--                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
-    {{--                            </li>--}}
-    {{--                        @endif--}}
-    {{--                    @else--}}
-    {{--                        <li class="nav-item dropdown">--}}
-    {{--                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"--}}
-    {{--                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
-    {{--                                {{ Auth::user()->name }}--}}
-    {{--                            </a>--}}
-
-    {{--                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">--}}
-    {{--                                <a class="dropdown-item" href="{{ route('logout') }}"--}}
-    {{--                                   onclick="event.preventDefault();--}}
-    {{--                                                     document.getElementById('logout-form').submit();">--}}
-    {{--                                    {{ __('Logout') }}--}}
-    {{--                                </a>--}}
-
-    {{--                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
-    {{--                                    @csrf--}}
-    {{--                                </form>--}}
-    {{--                            </div>--}}
-    {{--                        </li>--}}
-    {{--                    @endguest--}}
-    {{--                </ul>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </nav>--}}
 
     <main id="main">
         @yield('content')
@@ -198,59 +139,57 @@
             <div class="row">
                 <div class="col-12 col-md-6 col-xxl-2 py-3">
                     <h5>
-                        Need help?
+                        {{__("message.Need_help")}}?
                     </h5>
-                    <a class="btn btn-secondary">Contact Us</a>
+                    <a class="btn btn-secondary">{{__("message.Contact_us")}}</a>
                 </div>
                 <div class="col-12  col-md-6 col-xxl-3 py-3">
                     <h5>
-                        Customer Support
+                        {{__("message.Customer_Support")}}
                     </h5>
                     <ul>
-                        <li><a href="#">Returns & Warranty</a></li>
-                        <li><a href="#">Payment</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">{{__("message.Returns_&_Warranty")}}</a></li>
+                        <li><a href="#">{{__("message.Payment")}}</a></li>
+                        <li><a href="#">{{__("message.Shipping")}}</a></li>
+                        <li><a href="#">{{__("message.Terms_of_Service")}}</a></li>
+                        <li><a href="#">{{__("message.Privacy_Policy")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-6 col-xxl-3 py-3">
                     <h5>
-                        Corporate Info
+                        {{__("message.Corporate_Info")}}
                     </h5>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Brands</a></li>
-                        <li><a href="#">Affiliates</a></li>
-                        <li><a href="#">Investors</a></li>
-                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">{{__("message.About_Us")}}</a></li>
+                        <li><a href="#">{{__("message.Brands")}}</a></li>
+                        <li><a href="#">{{__("message.Affiliates")}}</a></li>
+                        <li><a href="#">{{__("message.Investors")}}</a></li>
+                        <li><a href="#">{{__("message.Cookies")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-6 col-xxl-2 py-3">
                     <h5>
-                        Gift card
+                        {{__("message.Gift_card")}}
                     </h5>
                     <ul>
-                        <li><a href="#">Buy Gift Cards</a></li>
-                        <li><a href="#">Redeem Card</a></li>
+                        <li><a href="#">{{__("message.Buy_Gift_Cards")}}</a></li>
+                        <li><a href="#">{{__("message.Redeem_Card")}}</a></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-12 col-xxl-2  py-3 d-flex justify-content-between flex-column">
                     <div>
                         <h5>
-                            Location
+                            {{__("message.Location")}}
                         </h5>
                         <select id="select-lang"
                                 onchange="top.location.href = 'setlocale/'+this.options[this.selectedIndex].value">
-                            <option {{--data-img_src="{{asset('images/langs/us.png')}}"--}} value="us"
+                            <option value="us"
                                     @if((App::isLocale('us'))) selected @endif>
-                                {{--                                <img class="flag" alt="USA" src="{{asset('images/langs/uk.png')}}"/>--}}
                                 United States
                             </option>
-                            <option {{--data-img_src="{{asset('images/langs/uk.png')}}"--}} value="uk"
+                            <option value="uk"
                                     @if((App::isLocale('uk'))) selected @endif>
-                                {{--                                <img class="flag" alt="ukraine" src="{{asset('images/langs/uk.png')}}"/>--}}
-                                Ukraine
+                                Україна
                             </option>
                         </select>
                     </div>

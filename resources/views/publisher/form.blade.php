@@ -4,7 +4,7 @@
             <div class="card-body">
 
                 <div class="row mb-3">
-                    <label for="name" class="col-2 col-form-label">{{ __('message.name') }}</label>
+                    <label for="name" class="col-2 col-form-label">Name</label>
                     <div class="col-10">
                         <input id="name" name="name" class="form-control @error('name') is-invalid @enderror"
                                type="text"
@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label for="name_ukr" class="col-2 col-form-label">{{ __('message.name_ukr') }}</label>
+                    <label for="name_ukr" class="col-2 col-form-label">Name ukrainian</label>
                     <div class="col-10">
                         <input id="name_ukr" name="name_ukr" class="form-control @error('name') is-invalid @enderror"
                                type="text"
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label for="image" class="col-2 col-form-label">{{ __('message.image') }}</label>
+                    <label for="image" class="col-2 col-form-label">Image</label>
                     <div class="col-10">
                         @if(isset($publisher))
                             <div class="d-flex flex-row">

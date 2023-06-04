@@ -26,11 +26,11 @@
                 <p class="short-desc">{{$book->description}}</p>
 
                 <div class="col-md-6">
-                    <p>{{ __('messages.price') }}: {{ number_format($book->price, 2, '.', '') }}</p>
+                    <p>{{ __('message.price') }}: {{ number_format($book->price, 2, '.', '') }}</p>
                     <form action="{{ route('basket.add', ['id' => $book->id]) }}"
                           method="post" class="d-inline">
                         @csrf
-                        <button type="submit" class="btn btn-success">{{ __('messages.add_to_basket') }}</button>
+                        <button type="submit" class="btn btn-success">{{ __('message.add_to_basket') }}</button>
                     </form>
                 </div>
 

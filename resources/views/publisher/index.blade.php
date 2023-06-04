@@ -7,7 +7,7 @@
                 <p>{{$messages}}</p>
             </div>
         @endif
-        <a class="btn btn-secondary" href="{{route('publisher.create')}}">{{__('messages.add_publisher')}}</a>
+        <a class="btn btn-secondary" href="{{route('publisher.create')}}">Add publisher</a>
         <table class="table table-dark table-stripped">
             <thead>
             <tr>

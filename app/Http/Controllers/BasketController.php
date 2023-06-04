@@ -12,15 +12,16 @@ class BasketController extends Controller
 {
     private $basket;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->getBasket();
     }
 
     /**
      * Показывает корзину покупателя
      */
-    public function index() {
-
+    public function index()
+    {
         $books = $this->basket->books;
         return view('basket.index', compact('books'));
     }
@@ -28,14 +29,17 @@ class BasketController extends Controller
     /**
      * Форма оформления заказа
      */
-    public function checkout() {
-        return view('basket.checkout');
+    public function checkout()
+    {
+        $books = $this->basket->books;
+        return view('basket.checkout', compact('books'));
     }
 
     /**
      * Добавляет товар с идентификатором $id в корзину
      */
-    public function add(Request $request, $id) {
+    public function add(Request $request, $id)
+    {
         $quantity = $request->input('quantity') ?? 1;
         $this->basket->increase($id, $quantity);
         // выполняем редирект обратно на ту страницу,
@@ -46,7 +50,8 @@ class BasketController extends Controller
     /**
      * Увеличивает кол-во товара $id в корзине на единицу
      */
-    public function plus($id) {
+    public function plus($id)
+    {
         $this->basket->increase($id);
         // выполняем редирект обратно на страницу корзины
         return redirect()->route('basket.index');
@@ -55,7 +60,8 @@ class BasketController extends Controller
     /**
      * Уменьшает кол-во товара $id в корзине на единицу
      */
-    public function minus($id) {
+    public function minus($id)
+    {
         $this->basket->decrease($id);
         // выполняем редирект обратно на страницу корзины
         return redirect()->route('basket.index');
@@ -64,7 +70,8 @@ class BasketController extends Controller
     /**
      * Возвращает объект корзины; если не найден — создает новый
      */
-    private function getBasket() {
+    private function getBasket()
+    {
         $basket_id = Cookie::get('basket_id');
 
         if (!empty($basket_id)) {
@@ -79,7 +86,8 @@ class BasketController extends Controller
         Cookie::queue('basket_id', $this->basket->id);
     }
 
-    public function remove($id) {
+    public function remove($id)
+    {
         $this->basket->remove($id);
         // выполняем редирект обратно на страницу корзины
         return redirect()->route('basket.index');
@@ -88,7 +96,8 @@ class BasketController extends Controller
     /**
      * Полностью очищает содержимое корзины покупателя
      */
-    public function clear() {
+    public function clear()
+    {
         $this->basket->delete();
         // выполняем редирект обратно на страницу корзины
         return redirect()->route('basket.index');

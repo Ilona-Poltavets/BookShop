@@ -3,11 +3,11 @@
 @section('content')
     <header class="home-header">
         <div class="home-slider-text">
-            <h1>Everything for your library</h1>
-            <div class="d-flex justify-content-around">
-                <a class="btn btn-success">dfkljglkfdjgkf</a>
-                <a class="btn btn-success">dfkljglkfdjgkf</a>
-            </div>
+{{--            <h1>Everything for your library</h1>--}}
+{{--            <div class="d-flex justify-content-around">--}}
+{{--                <a class="btn btn-success">dfkljglkfdjgkf</a>--}}
+{{--                <a class="btn btn-success">dfkljglkfdjgkf</a>--}}
+{{--            </div>--}}
         </div>
         <div class="home-slider">
             <img src="{{ url('images/1.jpg') }}" alt="">
@@ -34,7 +34,7 @@
     <section class="new-products">
         <div class="container">
             <div class="d-flex justify-content-between">
-                <h2>New products</h2><a class="link" href="{{ route('books.index') }}">Browse all products</a>
+                <h2>{{ __("message.New_products")}}</h2><a class="link" href="{{ route('books.index') }}">{{ __("message.Browse_all_products")}}</a>
             </div>
             <div class="slider">
                 @foreach($books as $book)
@@ -60,13 +60,13 @@
     <section class="promo-box">
         <div class="container">
             <div class="row">
-                <div class="promo-box-block">
-                    <h4>Discount</h4>
-                    <p class="up-to">up to</p>
-                    <h3>50%</h3>
-                    <p class="discount-p">discount on product from Genre</p>
+                <div class="promo-box-block" style="background-image: url('images/4.jpg')">
+                    <h4 style="color:white;">{{ __("message.Discount")}}</h4>
+                    <p style="color:white;" class="up-to">{{ __("message.up_to")}}</p>
+                    <h3 style="color:white;">50%</h3>
+                    <p style="color:white;" class="discount-p">{{ __("message.discount_on_product_from_Genre")}}</p>
                     <div class="d-flex justify-content-center">
-                        <a class="link" href="">Show now</a>
+                        <a class="link" href="">{{ __("message.Show_now")}}</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
     <section class="category-highlights">
         <div class="container">
             <div class="d-flex justify-content-between">
-                <h2>Category highlights</h2><a class="link" href="{{ route('books.index') }}">Browse all products</a>
+                <h2>{{ __("message.Category_highlights")}}</h2><a class="link" href="{{ route('books.index') }}">{{ __("message.Browse_all_products")}}</a>
             </div>
             <div class="slider">
                 @foreach($books as $book)
@@ -97,23 +97,23 @@
     <section class="discount">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-5 discount-block">
-                    <h4>Category</h4>
-                    <p class="up-to">up to</p>
+                <div class="col-12 col-md-5 discount-block" style="background-image: url('images/6.jpg')">
+                    <h4>{{ __("message.Category")}}</h4>
+                    <p class="up-to">{{ __("message.up_to")}}</p>
                     <h3>20%</h3>
-                    <p class="discount-p">discount on product from Category</p>
+                    <p class="discount-p">{{ __("message.discount_on_product_from_Category")}}</p>
                     <div class="d-flex justify-content-center">
-                        <a class="link" href="">Show now</a>
+                        <a class="link" href="">{{ __("message.Show_now")}}</a>
                     </div>
                 </div>
                 <div class="col-2"></div>
-                <div class="col-12 col-md-5 discount-block">
-                    <h4>Discount</h4>
-                    <p class="up-to">up to</p>
-                    <h3>50%</h3>
-                    <p class="discount-p">discount on product from Genre</p>
+                <div class="col-12 col-md-5 discount-block" style="background-image: url('images/5.jpg')">
+                    <h4 style="color:white;">{{ __("message.Discount")}}</h4>
+                    <p style="color:white;" class="up-to">{{ __("message.up_to")}}</p>
+                    <h3 style="color:white;">50%</h3>
+                    <p style="color:white;" class="discount-p">{{ __("message.discount_on_product_from_Genre")}}</p>
                     <div class="d-flex justify-content-center">
-                        <a class="link" href="">Show now</a>
+                        <a class="link" href="" style="color:white;">{{ __("message.Show_now")}}</a>
                     </div>
                 </div>
             </div>
@@ -125,15 +125,14 @@
             <div class="row">
                 <div class="col-12 col-md-4 d-flex align-items-center">
                     <div class="text-center text">
-                        <h4>Grab an extra 5% discount</h4>
-                        <p>Subscribe to monthly newsletter. Get the latest product updates and special offers delivered
-                            right to your inbox.</p>
+                        <h4>{{ __('message.Grab_an_extra') }}</h4>
+                        <p>{{ __("message.subscribe_to_monthly_newsletter")}}</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-8 d-flex align-items-center justify-content-center">
                     <form>
                         <input type="email" name="email" placeholder="Enter your email">
-                        <button type="submit" class="btn btn-footer-send">Subscribe</button>
+                        <button type="submit" class="btn btn-footer-send">{{__("message.Subscribe")}}</button>
                     </form>
                 </div>
             </div>

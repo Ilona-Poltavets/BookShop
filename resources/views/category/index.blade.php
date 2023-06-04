@@ -7,13 +7,13 @@
                 <p>{{$messages}}</p>
             </div>
         @endif
-        <a class="btn btn-secondary" href="{{ route('category.create') }}">{{__('messages.add_category')}}</a>
+        <a class="btn btn-secondary" href="{{ route('category.create') }}">Add category</a>
         <table class="table table-dark table-stripped">
             <thead>
             <tr>
                 <td>#</td>
-                <td>{{ __('messages.image') }}</td>
-                <td>{{ __('messages.name') }}</td>
+                <td>Image</td>
+                <td>Name</td>
                 <td></td>
             </tr>
             </thead>

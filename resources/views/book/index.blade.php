@@ -7,34 +7,41 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
-        <a class="btn btn-secondary" href="{{route('books.create')}}">{{__('message.add_book')}}</a>
+        <a class="btn btn-secondary" href="{{route('books.create')}}">Add book</a>
 
         <div class="library">
             @foreach($books as $book)
-                {{--                <a class="book" href="{{route('books.show',$book->id)}}">--}}
-                <div class="book">
-                    <img alt=""
-                         src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}">
-                    <h4>{{$book->name}}</h4>
-                    <p>{{$book->description}}</p>
-                    <p class="price">{{$book->price}}</p>
-                    <div class="btn-group" role="group">
-                        @auth()
-                            @if( Auth::user()->hasPermission('edit_book') )
-                                <a class="btn btn-primary"
-                                   href="{{route('books.edit',$book->id)}}">{{ __('message.edit') }}</a>
+
+{{--                <div class="product">--}}
+{{--                    <img src="https://placeimg.com/400/400/animals" alt="">--}}
+{{--                    <h4 class="product-name">Cotton candy jelly-o gummies</h4>--}}
+{{--                    <button class="btn btn-buy">Add to cart</button>--}}
+{{--                </div>--}}
+{{--                <a class="book" href="{{route('books.show',$book->id)}}">--}}
+                    <div class="book">
+                        <img alt=""
+                             src="{{ count($book->images)>0 ? url($book->first_image_path()) : url('uploads/noimage.jpg') }}">
+                        <h4>{{$book->name}}</h4>
+                        <p>{{$book->description}}</p>
+                        <p class="price">{{$book->price}}</p>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-primary" href="{{route('books.show',$book->id)}}">{{__("message.Show")}}</a>
+                            @auth()
+                                @if( Auth::user()->hasPermission('edit_book') )
+                                    <a class="btn btn-primary"
+                                       href="{{route('books.edit',$book->id)}}">{{ __('message.edit') }}</a>
+                                @endif
+                                @if( Auth::user()->hasPermission('delete_book') )
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal" data-bs-name="{{$book->name}}"
+                                            data-bs-id="{{$book->id}}">
+                                        {{ __('message.delete') }}
+                                    </button>
+                                @endif
                             @endif
-                            @if( Auth::user()->hasPermission('delete_book') )
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal" data-bs-name="{{$book->name}}"
-                                        data-bs-id="{{$book->id}}">
-                                    {{ __('message.delete') }}
-                                </button>
-                            @endif
-                        @endif
+                        </div>
                     </div>
-                </div>
-                {{--                </a>--}}
+{{--                </a>--}}
             @endforeach
         </div>
     </div>
